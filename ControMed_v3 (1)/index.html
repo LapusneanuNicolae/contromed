@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ControMed v3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-blue-600 text-white text-center py-6 shadow">
+    <h1 class="text-4xl font-bold">ControMed</h1>
+    <p class="text-lg mt-2">Platformă inteligentă de sănătate</p>
+  </header>
+
+  <main class="p-4 max-w-6xl mx-auto space-y-6">
+
+    <!-- Login/Register -->
+    <section class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Autentificare</h2>
+      <input id="username" type="text" placeholder="Nume utilizator"
+        class="p-2 border rounded mr-2"/>
+      <button onclick="login()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Intră</button>
+      <span id="welcomeMsg" class="ml-4 font-semibold text-green-600"></span>
+    </section>
+
+    <!-- Search -->
+    <section class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Caută o clinică</h2>
+      <input id="specialty" type="text" placeholder="Ex: Cardiologie"
+        class="p-2 m-2 border rounded w-48"/>
+      <input id="location" type="text" placeholder="Ex: Iași"
+        class="p-2 m-2 border rounded w-48"/>
+      <button onclick="searchClinics()"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Caută</button>
+    </section>
+
+    <!-- Map -->
+    <section class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Harta clinicilor</h2>
+      <div id="map" class="h-80 rounded shadow"></div>
+    </section>
+
+    <!-- Rezultate + Recenzii -->
+    <section class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Rezultate</h2>
+      <ul id="clinicList" class="list-disc pl-5 mb-4"></ul>
+      <div>
+        <h3 class="font-medium">Scrie o recenzie:</h3>
+        <input id="reviewText" class="border p-2 rounded w-full my-2" placeholder="Recenzia ta..." />
+        <button onclick="submitReview()" class="bg-green-600 text-white px-3 py-1 rounded">Trimite</button>
+        <ul id="reviewList" class="mt-2 list-disc pl-5 text-sm text-gray-700"></ul>
+      </div>
+    </section>
+
+    <!-- Programare -->
+    <section class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Fă o programare</h2>
+      <input id="apptClinic" class="border p-2 rounded m-2" placeholder="Nume clinică" />
+      <input id="apptDate" type="date" class="border p-2 rounded m-2" />
+      <button onclick="bookAppointment()" class="bg-purple-600 text-white px-4 py-2 rounded">Programează</button>
+      <ul id="appointments" class="mt-4 text-sm text-gray-700 list-disc pl-5"></ul>
+    </section>
+
+    <!-- Chatbot -->
+    <section class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Asistent Virtual</h2>
+      <input id="chatInput" class="border p-2 rounded w-full" placeholder="Scrie o întrebare..." onkeydown="if(event.key==='Enter') chat()" />
+      <div id="chatLog" class="mt-2 text-sm text-gray-700"></div>
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
